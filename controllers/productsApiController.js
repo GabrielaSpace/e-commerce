@@ -4,33 +4,34 @@ const Product = require('../models/products');
 const Provider = require('../models/providers');
 
 
-const getProducts = async (req,res) => {
-    if (req.params.id) { // con ID
-        try {
-            let product = await Product.find({id:req.params.id},'-_id -__v').populate('provider', '-_id -__v');
+const getProducts = async (req, res) => {
 
-            if (product.length > 0) {
-                res.status(200).json(product[0]); // Respuesta de la API para 1 producto
-            }
-            else {
-                res.status(404).json({msj:"producto no encontrado con ID "+req.params.id}); // Respuesta de la API para 1 producto
-            }    
+    
+
+    let products = [];
+    const pagination = req.query.hasOwnProperty('page') && req.query.hasOwnProperty('limit');
+    try {
+        if (pagination) {//Pagination
+            const page = parseInt(req.query.page);
+            const limit = parseInt(req.query.limit);
+            const skipIndex = (page - 1) * limit;
+
+            products = await Product.find({}, ' -_id -__v')
+                .sort({ _id: 1 })
+                .limit(limit)
+                .skip(skipIndex)
+                .exec();
+
+            res.status(200).json(products); //Devuelve el producto
+        } else {//Get all products
+            products = await Product.find({}, ' -_id -__v');
+            res.status(200).json(products); // Devuelve todos los datos
         }
-        catch(err){
-            res.status(400).json({msj: err.message});
-        }
-    } else { // sin ID --> TODOS los products
-        try {
-            // let products = await Product.find({}, {"_id" : 0,"__v":0}); // []
-            let products = await Product.find({},'-_id -__v');
-            res.status(200).json(products); // Respuesta de la API para muchos productos
-            console.log(products)
-        }
-        catch(err){
-            res.status(400).json({msj: err.message});
-        }
+    } catch (err) {
+        res.status(400).json({ message: err });
     }
 }
+
     const createProduct = async (req,res) => {
         console.log("Esto es el console.log de lo que introducimos por postman", req.body); // Objeto recibido de producto nuevo
         let company_id = await Provider.findOne({company_name: req.body.provider}, '_id');

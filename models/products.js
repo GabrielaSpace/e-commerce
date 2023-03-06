@@ -55,7 +55,6 @@ module.exports = Product;
 // Insertar un producto
 
 /* const p = new Product({
-    id: 6,
     provider: "styles",
     title: "Ring",
     price: "11.80",
