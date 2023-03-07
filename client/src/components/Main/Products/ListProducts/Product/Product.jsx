@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { MdAddShoppingCart } from "react-icons/md";
 import { TfiHeart} from "react-icons/tfi";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 const Product = (props) => {
   
@@ -16,15 +18,20 @@ const Product = (props) => {
 
   return (
     <>
-      <Link to={`/product?title=${props.data.title}&price=${props.data.price}&image=${props.data.image}&relevance=${props.data.relevance.rate}`}>
-        <img src={props.data.image} alt={props.data.title} />
-        <h3>{props.data.title.toUpperCase()}</h3>
-        <p>Price: {props.data.price}</p>
-        <p>Relevance: {props.data.rating.relevance}</p>
-        <button onClick={handleAddToCart}> <MdAddShoppingCart /></button>
-        <button onClick={handleAddToFavorites}><TfiHeart /></button>
+     <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={`${props.data.image}`} alt={props.data.title} style={{ width: '250px', height: '300px' }} />
 
+      <Card.Body>
+      <Link to={`/product?title=${props.data.title}&price=${props.data.price}&image=${props.data.image}&relevance=${props.data.relevance}`}>
+      <Card.Title> {props.data.title.toUpperCase()}</Card.Title>
       </Link>
+      <Card.Text>Price: {props.data.price}</Card.Text>
+      <Card.Text className="mb-2 text-muted">Relevance: {props.data.relevance}</Card.Text>
+      
+      <Button  variant="primary" onClick={handleAddToCart}> <MdAddShoppingCart /></Button>
+      <button onClick={handleAddToFavorites}><TfiHeart /></button>
+      </Card.Body>
+      </Card>
     </>
   );
 };

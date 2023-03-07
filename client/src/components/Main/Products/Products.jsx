@@ -2,27 +2,38 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ListProducts from './ListProducts/ListProducts';
 
+
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
-
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
-      .then(response => setProducts(response.data))
-      .catch(error => console.error(error));
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/products');
+        setProducts(response.data);
+        console.log('Productos recibidos correctamente:', response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchProducts();
   }, [setProducts]);
+  
 
   return (
     <section>
-      <ListProducts
-        data={products}
-        cart={cart}
-        setCart={setCart}
-        favorites={favorites}
-        setFavorites={setFavorites}
-      />
+      {products.length > 0 ? (
+        <ListProducts data={products}
+          cart={cart}
+          setCart={setCart}
+          favorites={favorites}
+          setFavorites={setFavorites}/>
+      ) : (
+        <p>Cargando productos...</p>
+      )}
     </section>
   );
 };

@@ -3,15 +3,21 @@ import axios from 'axios';
 import { MdAddShoppingCart, MdWest } from "react-icons/md";
 import { TfiHeart} from "react-icons/tfi";
 
+
 function DetailsProduct(props) {
+  
   const [manufacturer, setManufacturer] = useState('');
   const [cif, setCif] = useState('');
   const [address, setAddress] = useState('');
+  const [cart, setCart] = useState([]);
+const [favorites, setFavorites] = useState([]);
+
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`mongo/api/providers/${props.data.CIF}`);
+        const response = await axios.get(`http://localhost:5000/api/products/${props.data.CIF}`);
         setManufacturer(response.data.name);
         setCif(response.data.cif);
         setAddress(response.data.address);
@@ -43,7 +49,7 @@ function DetailsProduct(props) {
       <p>Address: {address}</p>
       <button onClick={handleAddToCart}> <MdAddShoppingCart /></button>
       <button onClick={handleAddToFavorites}><TfiHeart /></button>
-      <button onClick={() => history.goBack()}>< MdWest /></button>
+      <button >< MdWest /></button>
     </div>
   );
 }
