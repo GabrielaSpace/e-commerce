@@ -14,7 +14,7 @@ const Main = () => {
        <FormSearch />
  
       <Routes>
-        <Route element={<Products/>} path="/"/>
+        <Route element={<Products />} path="/"/>
         <Route element={<Cart/>} path="/cart"/>
       </Routes>
     </main>
