@@ -4,7 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const error404 = require('./middlewares/error404')
 const app = express()
-const port = 3000
+const port = 5000
 const cors = require('cors');
 
 // Módulos de Rutas
