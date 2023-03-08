@@ -22,6 +22,35 @@ export function ProductContextProvider({ children }) {
     const getAProvider = (id) => {
         return getProvider(id);
     };
+
+    const addCartProduct = (product) => {
+        if (cartProducts.includes(product)) {
+            cartProducts.forEach((cartProduct) => {
+                if (cartProduct.title === product.title) {
+                    cartProduct.quantity++;
+                }
+            });
+            
+            return;
+        }
+
+        product.quantity = 1;
+
+        setCartProducts([...cartProducts, product]);
+    };
+
+    const removeCartProduct = (product) => {
+        if (product.quantity > 1) {
+            product.quantity--;
+            return setCartProducts([...cartProducts]);
+        }
+
+        setCartProducts(
+            cartProducts.filter((cartProduct) => {
+                return cartProduct.title !== product.title;
+            })
+        );
+    };
     
     return (
         <ProductContext.Provider
@@ -29,7 +58,9 @@ export function ProductContextProvider({ children }) {
                 products,
                 getProduct,
                 getAProvider,
-                
+                cartProducts,
+                addCartProduct,
+                removeCartProduct,
             }}
         >
             {children}
