@@ -31,20 +31,7 @@ const productSchema = new mongoose.Schema({
       }, 
       message: "Por favor, sólo imágenes JPG o PNG"
     }
-  },
-  manufacturer: { 
-    type: String, 
-    required: true
-  },
-  address: { 
-    type: String, 
-    required: true
-  },
- CIF: { 
-    type: String, 
-    required: true
   }
-
 });
 
 const Product = mongoose.model('Product', productSchema);
