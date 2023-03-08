@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../../Context/ProductContext";
 
+
 export function ProductCard({ product }) {
     const navigate = useNavigate();
-    const { addCartProduct} = useContext(ProductContext);
+    const { addCartProduct, addFavoriteProduct } = useContext(ProductContext);
 
     return (
         <div onClick={() => navigate(`/productDetail/${product.title}`)} style={{cursor: "pointer"}}>
@@ -21,7 +22,10 @@ export function ProductCard({ product }) {
                 e.stopPropagation();
             }}>Agregar al carrito</button>
 
-           
+            <button onClick={(e) => {
+                addFavoriteProduct(product);
+                e.stopPropagation();
+            }}>Agregar a favoritos</button>
         </div>
     );
 }

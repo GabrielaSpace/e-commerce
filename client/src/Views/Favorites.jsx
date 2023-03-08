@@ -1,11 +1,22 @@
+import { useContext } from "react";
+import { ProductContext } from "../Context/ProductContext";
+
+import { FavoriteProductCard } from "../components/FavoriteProductCard/FavoriteProductCard";
 
 export function Favorites() {
-    return (
-      <div>
-            <h1>uuuu</h1>
-      </div>
-    );
-  }
-  
+    const { favoriteProducts } = useContext(ProductContext);
 
-  
+    return (
+        <div>
+            {
+                favoriteProducts.length > 0 ? (
+                    favoriteProducts.map((product) => (
+                        <FavoriteProductCard key={product.id} product={product} />
+                    ))
+                ) : (
+                    <h1>No hay productos favoritos</h1>
+                )
+            }
+        </div>
+    );
+}

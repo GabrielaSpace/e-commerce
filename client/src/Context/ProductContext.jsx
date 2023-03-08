@@ -23,6 +23,22 @@ export function ProductContextProvider({ children }) {
         return getProvider(id);
     };
 
+    const addFavoriteProduct = (product) => {
+        if (favoriteProducts.includes(product)) {
+            return;
+        }
+
+        setFavoriteProducts([...favoriteProducts, product]);
+    };
+
+    const removeFavoriteProduct = (product) => {
+        setFavoriteProducts(
+            favoriteProducts.filter((favoriteProduct) => {
+                return favoriteProduct.title !== product.title;
+            })
+        );
+    };
+
     const addCartProduct = (product) => {
         if (cartProducts.includes(product)) {
             cartProducts.forEach((cartProduct) => {
@@ -51,13 +67,16 @@ export function ProductContextProvider({ children }) {
             })
         );
     };
-    
+
     return (
         <ProductContext.Provider
             value={{
                 products,
                 getProduct,
                 getAProvider,
+                favoriteProducts,
+                addFavoriteProduct,
+                removeFavoriteProduct,
                 cartProducts,
                 addCartProduct,
                 removeCartProduct,
