@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { ProductContext } from "../Context/ProductContext";
 import { ProductCard } from "../components/ProductCard/ProductCard";
 
+
 export function Home() {
     const { products } = useContext(ProductContext);
     const [search, setSearch] = useState("");
