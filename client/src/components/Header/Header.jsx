@@ -4,7 +4,6 @@ import { MdStorefront} from "react-icons/md";
 import { TfiHeart} from "react-icons/tfi";
 import { Link } from "react-router-dom";
 
-import { Link } from "react-router-dom";
 
 const Header = () => {
   
