@@ -9,7 +9,7 @@ const productsApiRouter = express.Router();
 // GET http://localhost:3000/products
 // /products
 productsApiRouter.get('/',productsApiController.getProducts);
-productsApiRouter.get('/:id',productsApiController.getProducts);
+productsApiRouter.get('/:title',productsApiController.getProducts);
 productsApiRouter.post('/',productsApiController.createProduct);
 productsApiRouter.delete('/', productsApiController.deleteProduct);
 productsApiRouter.put('/', productsApiController.updateProduct)
