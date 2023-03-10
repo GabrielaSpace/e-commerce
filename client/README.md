@@ -63,10 +63,10 @@ I also invite you to visit my website [E-commerce](https://deploy-preview-10--sn
 
 Here is a view of the app :sparkles:
 
- ![Home](https://github.com/GabrielaSpace/e-commerce/blob/main/public/assets/Home.png)
- ![Favorites](https://github.com/GabrielaSpace/e-commerce/blob/main/public/assets/Favorites.png)
- ![Cart](https://github.com/GabrielaSpace/news-react/blob/main/public/assets/Cart.png)
- ![Product Details](https://github.com/GabrielaSpace/e-commerce/blob/main/public/assets/ProductDetails.png)
+ ![Home](https://github.com/GabrielaSpace/e-commerce/blob/develop/client/public/assets/Home.png)
+ ![Favorites](https://github.com/GabrielaSpace/e-commerce/blob/develop/client/public/assets/Favorites.png)Favorites.png)
+ ![Cart](https://github.com/GabrielaSpace/e-commerce/blob/develop/client/public/assets/Cart.png)
+ ![Product Details](https://github.com/GabrielaSpace/e-commerce/blob/develop/client/public/assets/ProductDetails.png)
  
 
 
