@@ -1,0 +1,38 @@
+section{
+    background-color:transparent;
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter{
+    font-size: 14px;
+    color: #9e7454 ;
+}
+.filter:hover{
+    font-size: 17px;
+    background-color: #FDEAD8;
+    padding: 5px;
+}
+
+input{
+    border: #9e7454;
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+    line-height: 30px;
+}
+
+.sectionName{
+    color: #9e7454 ;
+}
+
+.subTotal{
+    margin: 50px;
+    padding: 10px;
+    color: #9e7454 ;
+    text-align: center;
+    background-color: #FDEAD8;
+}
