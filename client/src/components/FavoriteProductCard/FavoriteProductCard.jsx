@@ -35,11 +35,13 @@ export function FavoriteProductCard({ product }) {
             <span className="txt"><button className="buttonCard" onClick={(e) => {
                 addCartProduct(product);
                 e.stopPropagation();
+                alert(`${product.title} added to cart!`);
             }}>< SlBasket size={25}/></button></span>
               
             <span className="txt"><button className="buttonCard" onClick={(e) => {
                  removeFavoriteProduct(product);
                 e.stopPropagation();
+                alert(`${product.title} removed from favorites!`);
             }}>< SlTrash  size={25}/></button></span>
             
             </span>

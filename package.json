@@ -6,7 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "server": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "concurrently \"npm run server\" \"npm run client\"",
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -21,11 +26,13 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
+    "currently": "^0.0.8",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^7.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.21",
-    "react-router-dom": "^6.8.2"
+    "react-router-dom": "^6.8.2",
+    "react-scripts": "^5.0.1"
   }
 }
