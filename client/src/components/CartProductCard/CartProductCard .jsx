@@ -32,6 +32,8 @@ export function CartProductCard({ product }) {
             <span className="txt"><button className="buttonCard" onClick={(e) => {
                  removeCartProduct(product);
                 e.stopPropagation();
+                alert(`${product.title} has been removed from the cart!`);
+
             }}>< SlTrash  size={25}/></button></span>
 
             </IconButton>

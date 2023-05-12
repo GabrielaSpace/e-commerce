@@ -39,10 +39,12 @@ export function ProductDetail() {
               <span className="txt"><button  className="buttonCard" onClick={(e) => {
                 addFavoriteProduct(product);
                 e.stopPropagation();
+                alert(`${product.title} added to favorites!`);
             }}>< SlHeart size={25}/></button></span>
             <span className="txt"><button className="buttonCard" onClick={(e) => {
                 addCartProduct(product);
                 e.stopPropagation();
+                alert(`${product.title} added to cart!`);
             }}>< SlBasket size={25}/></button></span>
             </span>
            
